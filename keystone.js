@@ -15,16 +15,23 @@ keystone.init({
 	'brand': 'Portfolio',
 	
 	'sass': 'public',
-	'static': 'public',
+	'static': ['public', 'lib', 'uploads'],
 	'favicon': 'public/favicon.ico',
 	'views': 'templates/views',
 	'view engine': 'jade',
-	
 	'auto update': true,
 	'session': true,
 	'auth': true,
 	'user model': 'Users',
-	'cookie secret': '1`[Z-*h|nF{1cykku}4y8VUMV4QT,|noJ:H4p<6u,0[+$`5>8(}aD`D-OKG_+4>)'
+	'cookie secret': '1`[Z-*h|nF{1cykku}4y8VUMV4QT,|noJ:H4p<6u,0[+$`5>8(}aD`D-OKG_+4>)',
+
+
+'wysiwyg override toolbar': false,
+'wysiwyg menubar': true,
+
+'wysiwyg additional buttons':'table, media, sh4tinymce, image',
+
+'wysiwyg additional plugins': 'table, sh4tinymce, media, image',
 
 });
 
@@ -53,12 +60,25 @@ keystone.set('routes', require('./routes'));
 // Configure the navigation bar in Keystone's Admin UI
 
 keystone.set('nav', {
-	'posts': ['posts', 'post-categories'],
+	'writing': ['posts', 'post-categories'],
+	'projects':'projects',
 	'galleries': 'galleries',
 	'enquiries': 'enquiries',
 	'users': 'users'
 });
 
 // Start Keystone to connect to your database and initialise the web server
+
+//cloudinary
+keystone.set('cloudinary config', { cloud_name: 'di8hqle2l', api_key: '355999169279577', api_secret: 'yOi8uRbK1Zl-IpsUECnDfuChOOM' });
+ 
+// optional, will prefix all built-in tags with 'keystone_'
+keystone.set('cloudinary prefix', 'keystone');
+ 
+// optional, will prefix each image public_id with [{prefix}]/{list.path}/{field.path}/
+keystone.set('cloudinary folders', true);
+ 
+// optional, will force cloudinary to serve images over https
+keystone.set('cloudinary secure', true);
 
 keystone.start();

@@ -1,0 +1,71 @@
+extends ../layouts/default
+
+doctype html
+block head
+    meta(http-equiv='content-type', content='text/html; charset=utf-8')
+    | &#x9;&#x9;
+    title Music Clock : Built with Processing and Processing.js
+    | &#x9;&#x9;
+    link(rel='icon', type='image/x-icon', href='data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAQAAVzABAEAjBQAaDwYAWjUGAGE6CQBrQQ0ATS8PAFhAJwBUQC8AbFI6AHVXPACBZk4A4NrWAPb19QAAAAAAAMmZmZmZmgAJIwAAAAAAcMIjPjA+PjAKpxIuMDMzMAm0Ii4zMzMACaIiLt3dMAAJtyIuIzPQAAm0Un5yM+IzKLRkfncy4iIotRF+dyLkIiq0QX53F+EiGrQUTkd34iIatEVu7u5iIVrBVVRBRFRVbAtGZGZla2uwAMu7u7u8vADAAwAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIABAADAAwAA')
+    | &#x9;&#x9;
+    meta(name='Generator', content='Processing')
+    //
+      - - - - - - - - - - - - - - - - - - - -
+      +
+      +    Wondering how this works?
+      +
+      +    Go to: http://processing.org/
+      +    and: http://processingjs.org/
+      +
+      + - - - - - - - - - - - - - - - - - - - -
+    style(type='text/css').
+      a img {
+      border: 0px solid transparent;
+      }
+      canvas {
+      display: block;
+      outline: 0px;
+      margin-bottom: 1.5em;
+      margin:0 auto;
+      }
+      #content {
+      margin: 0px auto 0px auto; padding: 150px 25px 150px 25px;
+      width: 1300px; min-width: 300px; overflow: auto;
+      width:100%;
+      background-color: #232323;
+      }
+    //if lt IE 9
+      script(type='text/javascript').
+        alert("Your browser does not support the canvas tag.");
+    | &#x9;&#x9;
+    script(src='/MusicClock/processing.js', type='text/javascript')
+    | &#x9;&#x9;
+    script(type='text/javascript').
+      // convenience function to get the id attribute of generated sketch html element
+      function getProcessingSketchId () { return '/DJApp/DJApp'; }
+    script(src='/MusicClock/Maxim.js', type='text/javascript')
+  | &#x9;
+
+block content 
+    div.container-fluid(style='padding-right:40px;')
+        p.pull-right: a(href='/projects') &larr; back to projects
+
+    #content
+      div
+        canvas#DJApp(data-processing-sources='/MusicClock/MusicViz.pde', width='1300', height='900')
+          p Your browser does not support the canvas tag.
+          // Note: you can put any alternative content here.
+        | &#x9;&#x9;&#x9;&#x9;
+        noscript
+          p JavaScript is required to view the contents of this page.
+    div.container: .col-sm-10.col-md-9
+      article
+        h1= data.post.title
+        h5 Posted 
+            if data.post.publishedDate
+              | on #{data.post._.publishedDate.format('MMMM Do, YYYY')} 
+            if data.post.author
+              | by #{data.post.author.name.first}
+        .post
+          != data.post.content.full
+

@@ -1,0 +1,66 @@
+body
+    {
+        font-family: Verdana;
+        font-size: 8pt;
+    }
+.qry
+{
+    width: 950px;
+    height: 500px;
+    background-color:darkseagreen;
+    margin-top: 60px;
+   
+}
+    
+
+    /* The main DIV for the map */
+    .subway-map
+    {
+       
+        width: 960px;
+        height:800px;
+        background-color:   #84BE6A;
+        margin-top: 168px;
+        background-image: url(363_tile_Grass.jpg);        
+        
+        
+    }
+
+    /* Text labels */
+    .text
+    {
+        text-decoration: none;
+        color: #FFD324;
+        font-weight: bolder;
+        -moz-transform: rotate(90deg);
+        
+        
+    }
+
+    #legend
+    {
+        margin-left: 700px;
+        width: 250px;
+        height:50px;
+        position: relative;
+        background-color:honeydew;
+        
+    }
+
+    #legend div
+    {
+        height: 25px;
+        
+    }
+
+    #legend span
+    {
+        margin: 5px 5px 5px 0;
+    }
+    .subway-map span
+    {
+        margin: 5px 5px 5px 0;
+        
+    }
+    
+  

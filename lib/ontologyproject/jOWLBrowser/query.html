@@ -1,0 +1,328 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:DC="http://purl.org/metadata/dublin_core_elements#" xml:lang="en" lang="en">
+<head>
+	
+	<meta name="Description" content="Querying the Shopping Ontology using jOWL"/>
+	<title>Shopping Ontology Querying</title>
+	<link rel="stylesheet" href="http://ontologyonline.org/css/blueprint/screen.css" type="text/css" media="screen, projection"/>
+	<link rel="stylesheet" href="css/jOWL.css" type="text/css"/>
+	<style type="text/css">
+		.background {background:transparent url(../images/topbar.png) repeat-x scroll top left;width:100%;}
+		img {border:0pt none;display:block}
+		pre {display:none;background-color:#555555;color:#EEEEEE;padding:10px;}
+		.loader {background-color:white;position:absolute;width:100%}
+		.demo {text-decoration:underline;color:#0FDDAF;cursor:pointer;}
+		.graypanel {background-color: #dff4ff;min-height:400px;}
+		.graypanel h3 {color: #0000FF}
+		.graypanel > * {color: #333333;padding:5px}
+		.stats {text-align:right;font-size:smaller;}
+		#resultwrapper {position:relative;min-height:800px;}
+		#results {background-color: green;color: white;padding:10px;min-height:50px;max-height:700px;overflow-y:auto}
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	<script type="text/javascript" src="scripts/jOWL.js"></script>
+	<script type="text/javascript" src="scripts/jOWL_UI.js"></script>
+    <script type="text/javascript">
+	//<![CDATA[
+$(document).ready(function() {
+	try { console.log('init console...'); } catch(e) { console = { log: function() {} } }
+
+	$('#sparql').submit(function(){return false;});
+
+	var $resultWrapper = $("#resultwrapper");
+
+	$(window).scroll(function(e){ //make the result section always visible
+		var scrollTop = $(window).scrollTop();
+		if(scrollTop > 419){
+			$resultWrapper.css({top: (scrollTop - 419) + "px"});
+		} else {
+			$resultWrapper.css({top: 0 + "px"});
+		}
+	
+	});
+
+	function displayResults(obj){
+		var display = $('#results');
+		if(obj.error){ display.text("Error: "+obj.error); }
+		else { 
+			display.empty().append($('<div class="stats"/>').text("Number of results: "+obj.results.length));
+			if(!obj.results.length)  { 
+				if(obj.assert != undefined) display.text("The query evaluates to "+obj.assert+".");
+				else display.text("No results found"); 
+				}
+			else 
+			{ console.log(obj.results);
+				for(var i=0;i<obj.results.length;i++){
+					var txt = [];
+					for(x in obj.results[i]){ 
+						var str = (typeof obj.results[i][x] == 'string') ? obj.results[i][x] : obj.results[i][x].label();
+						txt.push(x+' : '+str);
+						}
+					display.append($('<div/>').text(txt.join(', ')));
+				}
+			}
+		}
+		$(".loader").hide();
+	
+	}
+
+	function submit(query){
+		$(".loader").show("fast", function(){
+			new jOWL.SPARQL_DL(query).execute({ onComplete : displayResults});
+		}); 
+	}
+
+	jOWL.load('chicken.owl', function(){
+
+		$('#sparql').show().submit(function(){
+			submit($('input', this).val()); 
+			return false; 
+		});
+		$('.demos li > div').append($('<span/>').text('Search').addClass('demo'));
+
+		$('.demo').click(function(){
+			var pre = $(this).parent().next().show();
+			submit(pre.text());
+			
+		});
+	}, {reason : true });
+	
+});
+	//]]>
+	</script>
+	</head>
+    
+	<body>
+            <p><a href="/ontologyproject/index.html">Return to Project Home Page</a> or <a href="/projects/post/shopping-ontology-visualization">Return to Graeme Fulton project page</a></p>
+ <!--all the following div classes use the jOWL style sheet-->
+        
+        <div class="container">
+	    <div class="column span-24">
+                
+                <!--top image logo div-->
+	        <div class="background">
+                    <img src="../images/toplogo.png" alt="Shopping Ontology Logo"/></a>
+		</div>
+                <!--top image logo div-->
+            </div>
+			<hr class="space"/>
+                         <h3>Description:</h3>
+                        <p>
+                        This page presents a way to access the shopping ontology OWL file on a web page using Java Script. It enables anybody on the web to explore and understand
+                        the shopping ontology through the use of queries.
+                         </p>
+                        
+                        <ul>
+                                                   
+                                
+                            <li>Example queries are therefore provided that illustrate the main structure of the ontology. Three sets of queries are used:</li>
+                            <ol>
+                            <li>The first set show the main classes and properties within the ontology.</li>
+                            <li>The second set show how shops are located. For instance, an electronic shop is located on the highstreet on electronic road.</li>
+                            <li>The third set show how products are located within shops.</li>
+                            </ol>
+                        </ul>
+                        <p>
+                        </p>
+                        <h3>Instructions:</h3>
+                        <ol>
+                            <li>Browse the left panel to view example queries.</li>
+                            <li>Click the <font color="blue">'Search'</font> text
+                                to run a  query against the ontology. </li>
+                            <li>The Sparql syntax used to create the query will be presented 
+                                upon clicking the <font color="blue">'Search'</font> button.</li>
+                            <li>The search results will be provided in the right panel.</li>
+                            <li>Alternatively, enter your own Sparql DL Query into the search box provided at the top.</li>
+                        </ol>
+                        
+                         <hr class="space"/><hr />
+                               
+			<div class="column span-18 prepend-4 append-4">
+				<h3>Enter Sparql DL Query:</h3>
+				<form id="sparql" class="hide"><input type="text" size="100"/></form>
+				
+                        </div>
+                         <hr class="space"/><hr />
+			<div class="column span-24">
+				<div class="column span-12 first graypanel column">
+					<h2>Search Examples</h2>
+                                        <p><b><font color="red">Note: Please allow 5-10 seconds for these queries to load! Don't worry if your browser appears to freeze, it will return very shortly.</font></b></p>
+                                        
+                                       
+                                      
+                                        
+					<ul class="demos">
+                                            <hr class="space"/>
+                                             <h3>Main Ontology Concepts</h3>
+                                            
+                                            <p><b>Classes within the ontology:</b></p>
+                                            <!--list all shops-->
+						
+                                                
+                                                <li>
+                                                                                                    
+							<div>List all Shops: </div>
+                                                        
+							<pre>Type(?Structure, Shop)</pre>
+					   </li>
+                                          
+                                          <!--end of query-->
+                                          
+                                          <!--list all roads-->
+					   <li>
+                                                                                                    
+							<div>List all Roads: </div>
+                                                        
+							<pre>Type(?Road, Road)</pre>
+					   </li>
+                                          <!--end of query-->
+                                          <!--list all roads-->
+					   <li>
+                                                                                                    
+							<div>List all Areas: </div>
+                                                        
+							<pre>Type(?Area, Area)</pre>
+					   </li>
+                                          <!--end of query-->
+                                               <!--list all roads-->
+					   <li>
+                                                                                                    
+							<div>List all Book Shop products (listing all products takes too long): </div>
+                                                        
+							<pre>Type(?Product, BookItem)</pre>
+					   </li>
+                                          <!--end of query-->
+                                          <br>
+                                          
+                                              <hr class="space"/>
+                                              <h3>Locating Shops</h3>
+                                              
+                                          
+                                          <p><b>Shops within the Highstreet Structure</b>:</p>
+                                           <!--list Shops on highstreet road-->
+					   <li>
+                                                                                                 
+							<div>List shops on Electronic Street (on Highstreet): </div>
+                                                        
+							<pre>Type(?ElectronicShop, Shop), 
+PropertyValue(?ElectronicShop, hasRoad, ElectronicStreet )</pre>
+					   </li>
+                                           <!--next query-->
+                                           <li>
+                                                                                                 
+							<div>List shops on Clothes Street (on Highstreet): </div>
+                                                        
+							<pre>Type(?ClothesShop, Shop), 
+PropertyValue(?ClothesShop, hasRoad, ClothesRoad )</pre>
+					   </li>
+                                          
+                                          <!--end of query-->
+                                           <!--next query-->
+                                           <li>                                      
+							<div>List shops on Bank Street (on Highstreet):</div>
+                                                        
+							<pre>Type(?Bank, Shop), 
+PropertyValue(?Bank, hasRoad, BankRoad )</pre>
+					   </li>
+                                           <img src="../images/hs.png" alt="Highstreet Image"/>
+                                          <!--end of query-->
+                                          
+                                          <br>
+                                          <!--end of query-->
+                                          <p><b>Shops within other structures and areas:</b></p>
+                                           <!--next query-->
+                                           <li>                                      
+							<div>List shops located in a Retail Park (Residential Area): </div>
+                                                        
+							<pre>Type(?RetailParkShop, Shop), 
+PropertyValue(?RetailParkShop, hasComplex, RetailParkComplex )</pre>
+					   </li>
+                                          
+                                          <!--end of query-->
+                                          <!--next query-->
+                                           <li>                                      
+							<div>List shops located near the Motorway (Outskirts of town): </div>
+                                                        
+							<pre>Type(?WarehouseShop, Shop), 
+PropertyValue(?WarehouseShop, hasRoad, MotorwayRoad )</pre>
+					   </li>
+                                          
+                                          <!--end of query-->
+                                          <!--next query-->
+                                           <li>                                      
+							<div>List Supermarkets (Residential Area): </div>
+                                                        
+							<pre>Type(?Supermarket, Shop), 
+PropertyValue(?Supermarket, hasComplex, SupermarketComplex)</pre>
+					   </li>
+                                          
+                                          <!--end of query-->
+                                          <img src="../images/retailpark.png" alt="Retailpark Image"/>  
+                                          <hr class="space"/>
+                                          
+                                          
+                                          
+                                                
+                                          
+                                          <h3>Locating Products</h3>
+                                          <!--find fast food shops-->  
+					   <li>
+                                              
+                                               
+							<div>List all shops that sell Burgers: </div>
+                                                        
+							<pre> Type(?SellsBurger, Shop), 
+PropertyValue(?SellsBurger, sellsItem, Burger)</pre>
+					   </li>
+                                          <!--end of query-->
+                                           <!--find fast food shops-->  
+					   <li>
+                                              
+                                               
+							<div>List Fast Food Shops that sell Burgers: </div>
+                                                        
+							<pre>Type(?FastFoodBurger, FastFoodShop),
+ PropertyValue(?FastFoodBurger, sellsItem, Burger)</pre>
+					   </li>
+                                          <!--end of query-->
+                                          
+                                          <img src="../images/burger-clip-art-4.png" alt="FastFood Image"/>
+                                          
+                                          <br>
+                                              
+                                              <!--find fast food shops-->  
+					   <li>
+                                              
+                                               
+							<div>List Shop that sells Hammer: </div>
+                                                        
+							<pre>Type(?sellsHammer, Shop),
+ PropertyValue(?sellsHammer, sellsItem, Hammers_14 )</pre>
+					   </li>
+                                          <!--end of query-->
+                                          
+                                          <img src="../images/hammer-clipart.png" alt="FastFood Image"/>
+                                          <hr class="space"/>
+                                          
+                                         
+                                          
+                                          <!--END OF QUERIES-->
+				</div>
+				<div id="resultwrapper" class="column span-12 graypanel last column">
+					<h3>Results</h3>
+					<div class="loader hide" >
+						<div style="color:black">Querying, Please Stand By</div>
+                                                <img src="ajax-loader.gif" alt="Loading Image"/>
+					</div>
+					<div id="results" class="box"></div>
+				</div>
+			</div>
+		</div>
+		<hr class="space" />
+		
+	</div>
+	
+	
+	</body>
+</html>

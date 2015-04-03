@@ -1,0 +1,213 @@
+body
+    {
+        font-family: Verdana;
+        font-size: 8pt;
+        background-color: white;
+        
+    }
+    
+  
+h1,h2,h3,h4,h5,h6 { font-weight: normal; }
+
+h1 { font-size: 3em; line-height: 1; margin-bottom: 0.5em; }
+h2 { font-size: 2em; margin-bottom: 0.75em; }
+h3 { font-size: 1.5em; line-height: 1; margin-bottom: 1em; }
+h4 { font-size: 1.2em; line-height: 1.25; margin-bottom: 1.25em; }
+h5 { font-size: 1em; font-weight: bold; margin-bottom: 1.5em; }
+h6 { font-size: 1em; font-weight: bold; }
+
+hr {
+  background: #ddd; 
+  color: #ddd;
+  clear: both; 
+  float: none; 
+  width: 100%; 
+  height: .1em;
+  margin: 0 0 1.4em;
+  border: none; 
+}
+hr.space {
+  background: #fff;
+  color: #fff;
+}
+
+    .flag{
+        margin-top: 43px;
+        position: absolute;
+        margin-left: 290px;    }
+    
+    .qry{
+        
+        margin-top: 300px;
+        width: 230px;
+        height: 1000px;
+        position: absolute;
+        background-color: #FFD324;
+        
+    }
+    
+    
+    .loadOntology{
+       
+        margin-left: 230px;
+ width: 600px;
+   position: absolute;
+   background:url(topbar.png);width:155%;height:110px; 
+        
+    }
+ 
+     .fancy { color: aqua; font-style:italic; font-size:larger; font-weight:900; }
+     
+     
+    .searchbox{
+        margin-top: 20px;
+        width: 230px;
+        height: 110px;
+        background-color: #FFD324;
+        margin-left: 0px;
+        position:relative;
+    }
+    
+    /* The main DIV for the map */
+    .subway-map
+    {
+       
+        width: 2200px;
+        height:1350px;
+        background-color:   #84BE6A;
+        
+        margin-left: 230px;
+        background-image: url(grass2.jpg);  
+        
+        
+    }
+
+    /* Text labels */
+    .text
+    {
+        
+        color: gold;
+        font-size: xx-small;
+        font-weight: bolder;
+        
+        
+       
+    }
+    
+    /* Text labels */
+    .textlarge
+    {
+        
+        color: gold;
+        font-size: 12;
+        font-weight: bolder;
+        
+        
+       
+    }
+
+    #legend
+    {
+       
+        width: 230px;
+        height:500px;
+        
+        background-color:honeydew;
+       position: absolute;
+        
+    }
+
+    #legend div
+    {
+        height: 25px;
+        
+    }
+
+    #legend span
+    {
+        margin: 5px 5px 5px 0;
+    }
+    .subway-map span
+    {
+        margin: 5px 5px 5px 0;
+        
+    }
+    
+  
+    
+   #foo{ text-decoration: none;
+        color: #FFD324;
+        font-weight: bolder; }
+   
+#foo.highlight {text-align:center; font-size:11pt; font-family:verdana; color: red; background:#FFD324;}
+
+
+
+.Instructions{
+
+     font-family: "Helvetica Neue", "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+     
+     
+     
+position:absolute;
+margin-left:0px;
+width:2000px;
+height:1200px;
+font-size: 140%;
+background-color: white;
+padding-top: 30px;
+padding-left: 150px;
+
+
+}
+.loading{
+
+     font-family: "Helvetica Neue", "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+     
+     
+     
+position:absolute;
+margin-left:0px;
+width:2000px;
+height:1200px;
+font-size: 140%;
+background-color: white;
+padding-top: 30px;
+padding-left: 150px;
+
+
+}
+
+
+table
+{
+border-collapse:collapse;
+}
+table, td, th
+{
+border:1px solid black;
+}
+td
+{
+padding:15px;
+background-color: white;
+}
+
+th
+{
+background-color: limegreen;
+color:white;
+}
+
+.right{
+    margin-left:340px;
+    position: absolute;
+    
+}
+
+.menuform{
+    margin-top:90px;
+    
+    
+    
+}

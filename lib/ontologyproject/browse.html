@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="Description" content="Shopping Ontology Hierarchy using jOWL"/>
+        <title>Shopping Ontology Browser</title>
+        
+        <!---------------------------------------------------------------------------->
+        <!--css style sheets used: jOWL-->
+        <!---------------------------------------------------------------------------->
+        <link rel="stylesheet" href="jOWLBrowser/css/blueprint/screen.css" type="text/css" media="screen, projection"/>     
+        <link rel="stylesheet" href="jowl/css/jOWL.css" type="text/css"/>
+        <link rel="stylesheet" href="css/JUICustom.css" type="text/css"/> 
+        
+        <!--top bar-->
+        <style type="text/css">
+		.background {background:transparent url(images/topbar.png) repeat-x scroll top left;width:100%;}
+		img {border:0pt none;display:block}
+		#widget {background:#F8F8FF none repeat scroll 0%;}
+		#download { margin-left:25px;background-color:#708090;width:140px;border:2px solid black;padding:15px 20px 20px 20px; }
+       </style>
+     <!--extra one found:-->        
+        <style type="text/css">
+		img {border:0pt none;display:block}	
+
+		/** custom widget settings */
+		.jowl_link {text-decoration:underline;color:blue;cursor:pointer;}
+		.jowl_tooltip {text-decoration:underline;color:steelblue;}
+		#thingtooltip {border:0px;}
+		.stats {text-align:right;font-size:smaller;}
+		.resourcebox {text-align:left}
+    </style>
+    <!---------------------------------------------------------------------------->
+    <!-----End of Style Sheets->
+    <!---------------------------------------------------------------------------->
+        
+    
+    
+   <!---------------------------------------------------------------------------->
+   <!-----jQuery/JS Scripts->
+   <!----------------------------------------------------------------------------> 
+        <!--Scripts used: 
+            1. googlejquery
+            2. jqueery tooltip
+            3. jquery
+            4. jOWL
+            5. jOWL UI-->
+         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js"></script>
+         <script type="text/javascript" src="jowl/scripts/jquery.tooltip.js"></script>
+         <script type="text/javascript" src="js/jquery.js"></script>
+         <script type="text/javascript" src="jowl/scripts/jOWL.js"></script>
+         <script type="text/javascript" src="jowl/scripts/jOWL_UI.js"></script>
+         
+         <!-- this is the script that handles the visualization of the shopping.owl-->
+         <script type="text/javascript" src="js/anim.js"></script>
+
+   <!---------------------------------------------------------------------------->
+   <!-----End of jQuery/JS Scripts->
+   <!----------------------------------------------------------------------------> 
+         
+    </head>
+    
+    
+   <!---------------------------------------------------------------------------->
+   <!-----BODY----->
+   <!----------------------------------------------------------------------------> 
+    
+    <body>
+            <p><a href="/ontologyproject/index.html">Return to Project Home Page</a> or <a href="/projects/post/shopping-ontology-visualization">Return to Graeme Fulton project page</a></p>
+        
+        <!--all the following div classes use the jOWL style sheet-->
+        
+        <div class="container">
+	    <div class="column span-24">
+                
+                <!--top image logo div-->
+	        <div class="background">
+                    <img src="images/toplogo.png" alt="Shopping Ontology Logo"/></a>
+		</div>
+                <!--top image logo div-->
+            </div>
+       
+       <!--Main widget div-->
+       <div id="widget" class="column span-12">
+           <!--Shows the loading of the ontology-->
+           <div class="loader" >
+	       <div>Loading...</div>
+	   <img src="http://ontologyonline.org/img/ajax-loader.gif" alt="Loading Image"/>
+	   </div><!--end of loading-->
+                    
+           <!--Demo Div-->
+           <div id="demo" style="display:none;" class="column span-12">  
+          
+            <!--navbar--> 
+            <div class="column span-6 first">
+		<div id="navbar" class="ui-widget-content">
+		<h4 class="ui-dialog-titlebar ui-state-default">Navigation Bar</h4>
+		</div>
+	   <input id="owlauto" type="text" size="40" style="display:block;width:99%;margin:5px 0px;" title="enter a search term"/>
+	   </div>
+            
+           <!--individuals-->
+           <div class="column span-6 last">
+	   <div id="individuals" class="ui-widget-content resourcebox" data-jowl="owl:Class">
+	      <h4 class="ui-dialog-titlebar ui-state-default">Direct Individuals</h4>
+		<div class="jowl-content">
+		<div class="propertybox ui-state-hover"  data-jowl="rdfs:label">${rdfs:label}</div>
+		<div class="propertybox" data-jowl="sparql-dl:DirectType(?x, owl:Class)">${?x}</div>
+		</div>
+	  </div>	
+            
+	
+           <!--resource box-->    
+           <div id="thingtooltip" class="resourcebox" data-jowl="owl:Thing">
+	   <div class="propertybox" data-jowl="rdfs:comment">${rdfs:comment}</div>
+	   <div class="propertybox">	
+	   <div data-jowl="sparql-dl:PropertyValue(owl:Thing, ?y, ?z)">
+	   <span class="alt">${?y}</span><span>: </span><span>${?z}</span>
+	   </div>
+	   </div>
+	   </div>
+	
+           <!--Tree view-->
+           <div id="treeview"  class="ui-widget-content" style="margin-top:5px;">
+	   <h4 class="ui-dialog-titlebar ui-state-default">Treeview</h4>
+	   </div>	
+	
+       </div>
+               
+               
+       </div><!--end of demo div-->
+       </div><!--end of widget div-->  
+       
+   <!---------------------------------------------------------------------------->
+   <!-----END OF WIDGET - BELOW IS USER INSTRUCTIONS----------------------------->
+   <!----------------------------------------------------------------------------> 
+       
+       
+       <div class="column span-10 last" style="margin-left:10px;">
+			<h2>Shopping Ontology</h2>
+                        <h3>User Interface Instructions</h3>
+                        <ol>
+                            <li>Enter an ontology term such as 'NamedShop' into the search box in the bottom left.</li>
+                            <li>A list of related classes will then appear in the Navigation Bar box in the above.</li>
+                            <li>Classes within the navigation box can be selected for further exploration of the ontology.</li>
+                            <li>Upon clicking a concept in the Navigation Box, Direct Individuals of the class will be presented in the
+                                neighboring Direct Individuals Box.</li>
+                            <li>The tree view provided in the bottom right provides a hierarchical structure of the ontology.</li>
+                        </ol>
+			
+                        <h3>Project Information</h3>
+                        <p>The shopping ontology was created using Protege Ontology Editor, and has been visualized using jOWL 
+                            - a <a title="jQuery" href="http://jquery.com/">jQuery</a> 
+                            plugin for navigating and visualising OWL-RDFS documents. 
+                       
+		</div>
+                
+       
+</div><!--container end-->
+ 
+ <br>
+ <hr class="space"/><hr />
+ 
+ <!------------------------------------------------------------------------------------------------------------->
+ <!------END OF FIRST EFFORT------------------------------------------------------------------------------------>
+ <!------------------------------------------------------------------------------------------------------------->
+ <!------------------------------------------------------------------------------------------------------------->
+ 
+ 
+ 
+ 
+
+
+</body>
+</html>

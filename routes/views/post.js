@@ -6,7 +6,7 @@ exports = module.exports = function(req, res) {
 		locals = res.locals;
 	
 	// Set locals
-	locals.section = 'blog';
+	locals.section = 'writings';
 	locals.filters = {
 		post: req.params.post
 	};

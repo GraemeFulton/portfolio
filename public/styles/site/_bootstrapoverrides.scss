@@ -1,0 +1,272 @@
+$link-color:#38BBC9;
+$off-white: #fafafa;
+$code:rgba(0,0,0,0.02);
+$string: #2EACB8;
+$keyword: #14778E;
+$comments: #A8A8A8;
+$gutter-line: #C0DDE1;
+
+@font-face {
+    font-family: OpenBaskerville;
+    src: url('../fonts/OpenBaskerville-0.0.75.woff') format('woff'),
+         url('../fonts/OpenBaskerville-0.0.75.ttf') format('truetype'),
+}
+
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+@import url(http://fonts.googleapis.com/css?family=Esteban);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans);
+@import url(http://fonts.googleapis.com/css?family=Karma:300);
+@import url(http://fonts.googleapis.com/css?family=Halant:300,400);
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,300);
+@import url(http://fonts.googleapis.com/css?family=Merriweather:400,300);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+@import url(http://fonts.googleapis.com/css?family=Lato:400,300);
+@import url(http://fonts.googleapis.com/css?family=Fjalla+One);
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300);
+@import url(http://fonts.googleapis.com/css?family=Quattrocento);
+@import url(http://fonts.googleapis.com/css?family=Alegreya+Sans:300,400,700,800,900);
+@import url(http://fonts.googleapis.com/css?family=Alegreya+Sans+SC:300,400);
+@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,700);
+
+p, p>a{
+	font-family: 'Merriweather', serif; 
+
+  }
+
+li, label, input, select, textarea, ol{
+	  		font-family: 'Merriweather Sans', sans-serif;
+}
+
+  .blog{
+  	p, li{
+  		font-family: 'Merriweather Sans', sans-serif;
+  	}
+  }
+
+p{
+	line-height:1.5;
+	color:#4D4D4D;
+}
+
+h1, h2, h3, h4, h5, h6{
+	font-family: 'Alegreya Sans', sans-serif;
+	line-height:1.3;
+	font-weight:700;
+}
+
+.light-weight{
+	font-weight: 300;
+  color: #9C9C9C;
+}
+
+article{
+	.post{
+		float:none;
+	}
+	p, li, label, input, select, textarea{
+		font-size:16px;
+		line-height:28px;
+	}
+	li, label, input, select, textarea{
+		font-family: 'Merriweather', serif; 
+	}
+}
+
+.navbar-default{
+	border:0px;
+	background:#fff;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  color: #555;
+  background-color: #f1f1f1;
+} 
+
+.navbar-default{
+	li, .navbar-brand{
+		font-family:'Alegreya Sans SC', sans-serif;
+	}
+
+}
+
+*{
+	border-radius:0px!important;
+}
+
+#header{
+	margin-top:10px;
+}
+
+h2, h1{
+	a {
+	  color: #555;
+	  text-decoration: none;
+	}	
+	a:hover, a:focus {
+	  color: #333;
+	  text-decoration: underline;
+	}
+
+
+}
+
+
+
+		a{
+			color:$link-color;
+		}
+		a:hover, a:focus {
+		  color: $link-color;
+		  text-decoration: underline;
+		}
+	
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+  z-index: 2;
+  color: $link-color;
+  background-color: $off-white;
+  border-color: $link-color;
+}
+
+
+.lead.text-muted{
+	font-size:14px;
+}
+
+.list-group{
+	a{
+		font-family:'Alegreya Sans', sans-serif;
+		color:#666;
+	}
+
+}
+
+.side-block{
+	background:$off-white;
+	
+	.list-group-item{
+	border:0px;
+	background:$off-white;
+	padding:0px;
+	margin-bottom:13px;
+	}
+}
+
+a.list-group-item:hover, a.list-group-item:focus{
+	background-color:#fafafa;
+}
+
+
+.category-tag{
+		padding:8px;
+		border:1px solid #eaeaea;
+		background:#fefefe;
+		width:110px;
+		text-align:center;
+	}
+
+
+#footer{
+	padding-left:15px;
+	p{
+		font-family:'Alegreya Sans', sans-serif;
+
+	}
+
+}
+
+
+	.btn-primary {
+	  background-color: $link-color;
+	  border-color: $link-color;
+	  font-family:'Alegreya Sans SC', sans-serif;
+
+	}
+
+	
+.post{
+	float:left;
+img{
+	max-width:100%;
+	height:auto;
+	margin-top:5px;
+	margin-bottom:10px;
+}
+h2,h3,h4,h5{
+	font-family:'Merriweather Sans', sans-serif;
+	color:#4d4d4d;
+}
+code{
+	  padding: 2px 4px;
+  font-size: 90%;
+  color: #595959;
+  background-color: #F5F7F8;
+  border: 1px solid #e4e4e4;
+}
+.syntaxhighlighter{
+	
+	background-color:$code!important;
+	overflow:scroll;
+	overflow-y:hidden;
+	font-size: 16px;
+	color:rgba(0,0,0,0.8);
+	padding:20px;
+	position:relative;
+	margin-bottom:12px;
+
+	.plain, .plain a{
+		color:rgba(0,0,0,0.723)!important;
+	}
+
+	.code{
+		background-color:transparent;
+
+		.container{
+			background:transparent;
+		}
+		.line.alt1, .line.alt2{
+		background-color:transparent!important;
+		}
+	}
+	.gutter{
+		.line.alt1, .line.alt2{
+		background-color:transparent!important;
+		}
+	}
+	code{
+		background-color:transparent;
+		border: 0px;
+
+	}
+
+	.string, .string a{
+		color:$string!important;
+	}
+	.keyword{
+		color:$keyword!important;
+	}
+	.comments, .comments a{
+		color:$comments!important;
+	}
+	.gutter .line{
+		padding-right:10px;
+		border-right:2px solid $gutter-line!important;
+	}
+	textarea{
+		position:absolute;
+		top:0;
+		left:0;
+		width:100%;
+		height:100%;
+		font-size:15px;
+		font-family:'Menlo', sans-serif;
+		line-height:1.4;
+		padding:5px;
+	}
+	table td.code .line {
+    white-space: nowrap !important;
+    word-wrap: inherit !important;
+	}
+}
+}
+

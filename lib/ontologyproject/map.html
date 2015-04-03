@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       
+
+         <!--jQuery UI script-->
+         
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <!---------------------------------------------------------------------------->
+        <!--css style sheets used: jOWL-->
+        <!---------------------------------------------------------------------------->
+          
+         
+        <link rel="stylesheet" href="css/styler.css" type="text/css"/> 
+        
+        <!--jQuery UI CSS-->
+        
+        <link type="text/css" href="js/jquery-ui-1.8.22.custom/css/south-street/jquery-ui-1.8.22.custom.css" rel="stylesheet"/>
+        
+         <!--top bar-->
+        <style type="text/css">
+		.background {background:transparent url(images/topbar.png) repeat-x scroll top left;width:75%; position: absolute;}
+		img {border:0pt none;display:block}
+		#widget {background:#F8F8FF none repeat scroll 0%;}
+		#download { margin-left:25px;background-color:#708090;width:140px;border:2px solid black;padding:15px 20px 20px 20px; }
+                .loader {background-color:white;position:absolute;width:100%}
+       </style>
+       
+    <!---------------------------------------------------------------------------->
+    <!-----End of Style Sheets->
+    <!---------------------------------------------------------------------------->
+  
+   <!---------------------------------------------------------------------------->
+   <!-----jQuery/JS Scripts->
+   <!----------------------------------------------------------------------------> 
+        <!--Scripts used: 
+            1. googlejquery
+            2. jqueery tooltip
+            3. jquery
+            4. jOWL
+            5. jOWL UI-->
+        
+         
+         <script type="text/javascript" src="js/jquery.js"></script>
+         <script type="text/javascript" src="jowl/scripts/jOWL.js"></script>
+     
+               
+         <!-- this is the script that handles the visualization of the shopping.owl-->
+         <script type="text/javascript" src="js/mapjs.js"></script>
+
+         
+   <!---------------------------------------------------------------------------->
+   <!-----End of jQuery/JS Scripts->
+   <!----------------------------------------------------------------------------> 
+   
+  
+   
+   <!---------------------------------------------------------------------------->
+   <!-----End of Subway Map scripts->
+   <!----------------------------------------------------------------------------> 
+   <title>Map Visualization</title>
+    </head>
+    
+    <body>   
+                
+       
+         
+            
+   <div class="loadOntology">
+       <div class="flag">
+           <img id="uk" src="images/United-Kingdom-flag-64.png">
+           <img id="de" src="images/Germany-Flag-64.png">
+           <img id="es" src="images/Spain-Flag-64.png">
+           </div>
+            <img src="images/toplogo.png" alt="Shopping Ontology Logo"/>
+           
+            
+        </div>
+       
+        <!------------------------------------------------>
+        <!--Here the query box is loaded onto the page-->
+        <!------------------------------------------------>
+        <div class="searchbox">
+            <button id='refresh'>Exit</button>
+            
+          
+				<h3>Locate a product:</h3>
+				<form id="sparql" class="hide"><input id="tags" type="text" size="30"/></form>
+                                
+        </div>
+        
+       
+        <!------------------------------------------------>
+        <!------------------------------------------------>
+       
+        
+        <div id="legend"> </div>
+       
+        <div class="qry"> 
+            <h3> Search Results: </h3>
+ 
+        </div>
+        
+        
+        
+        <div class="subway-map" data-columns="25" data-rows="16" data-cellSize="80" data-legendId="legend" data-textClass="textlarge" data-gridNumbers="true" data-grid="true" data-lineWidth="15">
+               
+             <div class="Instructions">
+                 <p><a href="/ontologyproject/index.html">Return to Project Home Page</a> or <a href="../">Return to Graeme Fulton Homepage</a></p>
+                 <h1>Ontology Visualization Interface</h1>
+                 <div class="right">
+                <h2>Instructions:</h2>
+                <ul>
+                    <li>Select an Ontology version from the top dropdown menu</li>
+                    <hr class="space">
+                    <li>Select a zoom value.</li>
+                    <ul><li>'Zoom in' is easier to read, with larger images and larger text</li>
+                        <li>'Zoom out' shows more of the map, but is harder to read. </li>
+                    </ul>
+                    <hr class="space">
+                    <li>Select a Theme</li>
+                    <ul>
+                        <li>'Building 3D' uses animated images to represent buildings</li>
+                        <li>'Building 2D' uses 2D shapes to represent buildings  </li>
+                        <li>'Station icons' displays the ontology as a subway map</li>
+                    </ul>
+                    <hr class="space">
+                    <li>Click the 'Visualize!' button to load the ontology visualization.</li>
+                </ul>
+                
+                <hr class="space">
+                
+             </div>
+                  <div class="menuform">
+                    <form id="form1" method="post"> 
+     <table >
+         <tr><th>Ontology:</th> <td><select id="slt_country" name="country"> 
+        <option value="uk.owl" >UK Version</option>
+        <option value="german.owl" >Germany Version</option>
+        <option value="spain.owl" >Spain Version</option>
+        </select></td></tr>
+            
+         <tr><th>Zoom: </th><td><select id="slt_zoom" name="zoom"> 
+        <option value="In" >Zoom In</option>
+        <option value="Out" >Zoom Out</option>
+        </select></tr></td>
+     
+     <tr><th>Theme</th><td><select id="slt_icons" name="icons"> 
+        <option value="Buildings" >Building 3D</option>
+        <option value="Buildings2D" >Building 2D</option>
+        <option value="Stations" >Station Icons</option>
+        </select></td></tr>
+       
+        <tr ><td colspan="2" style="background-color: #00F; padding:5px;"><button style="width:220px; background-color:#00F; color:white; font-weight: bolder;" type="submit" Value="submit" >Visualize!</button></td></tr>
+        
+            </table>
+                        </form>
+                  
+                </div>
+                 
+                
+            </div>
+            <div class="loading">
+            <img src="images/loading.gif" style="display: none;" id="loading_image">  
+            </div>
+            
+        </div>
+        
+        
+         
+         
+   <!---------------------------------------------------------------------------->
+   <!-----IMPORT SUBWAY MAP PLUGIN and set shop ICONS----------------------------------------------->
+   <!----------------------------------------------------------------------------> 
+   <img id="hsIcon" src="images/shop.png" style="display:none;"/>
+   <img id="warehouseIcon" src="images/warehouse.png" style="display:none;"/>
+   <img id="storeIcon" src="images/retailshop.png" style="display:none;"/> 
+   <img id="superIcon" src="images/supermarket.png" style="display:none;"/> 
+      <script type="text/javascript" src=js/jquery.subwayMap-0.5.0.js></script>
+    
+    <script src="js/jquery-ui-1.8.22.custom/js/jquery-ui-1.8.22.custom.min.js"></script>
+ 
+  
+        </body> 
+    
+</html>

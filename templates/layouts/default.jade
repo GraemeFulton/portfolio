@@ -9,7 +9,7 @@ html
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
 		meta(http-equiv="X-UA-Compatible" content="IE=edge")
 
-		title= title || 'KeystoneJS'
+		title= title || 'GF Design | Development'
 		link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
 
 		//- Customise the stylesheet for your site by editing /public/styles/site.less
@@ -37,7 +37,7 @@ html
 	body
 
 		//- HEADER
-		#header: .container
+		#header: .container-fluid
 
 			//- Customise your site's navigation by changing the navLinks Array in ./routes/middleware.js
 			//- ... or completely change this header to suit your design.
@@ -50,7 +50,9 @@ html
 							span.icon-bar
 							span.icon-bar
 							span.icon-bar
-						a.navbar-brand(href='/') Graeme Fulton
+						a.navbar-brand(href='/')
+							//- img(src='/images/logo.svg', width='45', style="float:left;margin-top:-12px;")
+							img(src='/images/profile.png', width='53' style="float:left;margin-top:-15px; border-radius:100px!important;")
 					.collapse.navbar-collapse
 						ul.nav.navbar-nav.navbar-left
 							each link in navLinks
@@ -82,10 +84,11 @@ html
 
 
 		//- FOOTER
-		.container: #footer
+		.container-fluid: #footer
 
 			//- You don't _have_ to include a link saying your site is powered by KeystoneJS, but we appreciate it!
-			p Powered by <a href="http://keystonejs.com" target="_blank">KeystoneJS</a>.
+			p I made this with KestoneJS 
+
 
 
 		//- JAVASCRIPT

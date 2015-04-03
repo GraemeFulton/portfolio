@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1345153961928" name="http://protege.stanford.edu/plugins/owl/protege" uri="nbproject/private/retriever/protege.stanford.edu/plugins/owl/protege.xml"/>
+        <uri id="Automatically generated entry, Timestamp=1345153961928" name="http://www.co-ode.org/ontologies/pizza/pizza.owl" uri="nbproject/private/retriever/www.co-ode.org/ontologies/pizza/pizza.owl.xml"/>
+        <uri id="Automatically generated entry, Timestamp=1345153961928" name="duplicate:http://www.csc.liv.ac.uk/~m1gf/shopping" uri="chicken2.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1345153961928" name="duplicate:http://www.csc.liv.ac.uk/~m1gf/shopping" uri="chicken3.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1345153961928" name="duplicate:http://www.csc.liv.ac.uk/~m1gf/shopping" uri="esp.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1345153961928" name="duplicate:http://www.csc.liv.ac.uk/~m1gf/shopping#" uri="chicken.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1345153961928" name="duplicate:http://www.csc.liv.ac.uk/~m1gf/shopping#" uri="german.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1345153961928" name="duplicate:http://www.csc.liv.ac.uk/~m1gf/shopping#" uri="spain.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1345153961928" name="duplicate:http://www.csc.liv.ac.uk/~m1gf/shopping#" uri="UK.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1345153961928" name="http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#" uri="owldoc/wine.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1345153961928" name="shadowed:http://www.csc.liv.ac.uk/~m1gf/shopping" uri="owldoc/monkey.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1345153961928" name="shadowed:http://www.csc.liv.ac.uk/~m1gf/shopping" uri="owldoc/shop.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1345153961928" name="shadowed:http://www.csc.liv.ac.uk/~m1gf/shopping" uri="owldoc/shopping.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1345153961928" name="shadowed:http://www.csc.liv.ac.uk/~m1gf/shopping#" uri="jOWLBrowser/chicken.owl"/>
+    </group>
+</catalog>

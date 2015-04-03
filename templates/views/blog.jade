@@ -2,29 +2,42 @@ extends ../layouts/default
 
 mixin post(post)
 	.post(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
-		h2: a(href='/blog/post/' + post.slug)= post.title
-		p.lead.text-muted Posted 
-			if post.publishedDate
-				| on #{post._.publishedDate.format('MMMM Do, YYYY')} 
-			if post.categories && post.categories.length
-				| in 
-				each cat, i in post.categories
-					a(href='/blog/' + cat.key)= cat.name
-					if i < post.categories.length - 1
-						| , 
-					else
-						|  
-			if post.author
-				| by #{post.author.name.first}
-		if post.image.exists
-			img(src=post._.image.fit(160,160)).img.pull-right
-		p!= post.content.brief
-		if post.content.extended
-			p.read-more: a(href='/blog/post/' + post.slug) Read more...
+				
+		div.col-sm-9.nopad
+			hr
+
+			p.lead.text-muted Posted 
+				if post.publishedDate
+					| on #{post._.publishedDate.format('MMMM Do, YYYY')} 
+				if post.categories && post.categories.length
+					| in 
+					each cat, i in post.categories
+						a(href='/writings/' + cat.key)= cat.name
+						if i < post.categories.length - 1
+							| , 
+						else
+							|  
+				if post.author
+					| by #{post.author.name.first}
+				
+			//post image
+			if post.image.exists
+				div.imgcontainer.col-sm-12.nopad: a(href='/writings/post/' + post.slug)
+					img(src='/post/single/'+post.image.filename).img
+			
+			//post title
+			h2: a(href='/writings/post/' + post.slug)= post.title
+				
+				
+			//post content
+			p!= post.content.brief
+			
+			if post.content.extended
+				p.read-more: a(href='/writings/post/' + post.slug) Read more...
 
 block intro
 	.container
-		h1= data.category ? data.category.name : 'Blog'
+		h1= data.category ? data.category.name : 'Writings'
 
 block content
 	.container: .row
@@ -46,9 +59,9 @@ block content
 					.blog
 						each post in data.posts.results
 							+post(post)
-					
+						
 					if data.posts.totalPages > 1
-						ul.pagination
+						ul.pagination.col-sm-12
 							if data.posts.previous
 								li: a(href='?page=' + data.posts.previous): span.glyphicon.glyphicon-chevron-left
 							else
@@ -67,9 +80,11 @@ block content
 						h3.text-muted There are no posts yet.
 		
 		if data.categories.length
-			.col-sm-4.col-md-3
+			.col-sm-4.col-md-3.side-block
 				h2 Categories
-				.list-group(style='margin-top: 70px;')
-					a(href='/blog', class=!data.category ? 'active' : false).list-group-item All Categories
+				.list-group
+					a(href='/writings', class=!data.category ? 'active' : false).list-group-item 
+						div.category-tag All Categories
 					each cat in data.categories
-						a(href='/blog/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).list-group-item= cat.name
+						a(href='/writings/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).list-group-item
+							div.category-tag= cat.name
