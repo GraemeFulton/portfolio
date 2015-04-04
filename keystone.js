@@ -1,4 +1,4 @@
-// Simulate config options from your production environment by
+ // Simulate config options from your production environment by
 // customising the .env file in your project's root folder.
 require('dotenv').load();
 
@@ -62,6 +62,7 @@ keystone.set('routes', require('./routes'));
 keystone.set('nav', {
 	'writing': ['posts', 'post-categories'],
 	'projects':'projects',
+	'pages':['pages', 'page-categories'],
 	'galleries': 'galleries',
 	'enquiries': 'enquiries',
 	'users': 'users'

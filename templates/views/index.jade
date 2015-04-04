@@ -1,16 +1,13 @@
 extends ../layouts/default
 
 block content
-	.container-fluid.pad-30 
-		//- img(src='/images/profile.png', width='180')
+	.container: .jumbotron
+		img(src='/images/profile.png', width='120', style='border-radius:150px!important;')
 		h1 Graeme Fulton
-		p Designer & Front-end developer @IBM
+		h4 Front-end developer and designer
+		p Currently @ IBM
 		p MSc Computer Science
-		br
-		h4 I write: 
-		ul
-			li 
-				a(href = '/writings/tutorials') tutorials 	
-			li
-				a(href='/writings/articles') articles
+		//- hr
+		a(href='/pages/') About me
 
+		//- hr

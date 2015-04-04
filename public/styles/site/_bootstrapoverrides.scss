@@ -1,4 +1,4 @@
-$link-color:#38BBC9;
+$link-color:#1E94A1;
 $off-white: #fafafa;
 $code:rgba(0,0,0,0.02);
 $string: #2EACB8;
@@ -28,7 +28,7 @@ $gutter-line: #C0DDE1;
 @import url(http://fonts.googleapis.com/css?family=Alegreya+Sans+SC:300,400);
 @import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,700);
 
-p, p>a{
+p, p>a {
 	font-family: 'Merriweather', serif; 
 
   }
@@ -143,7 +143,7 @@ h2, h1{
 
 .side-block{
 	background:$off-white;
-	
+	float:left;
 	.list-group-item{
 	border:0px;
 	background:$off-white;
@@ -183,7 +183,15 @@ a.list-group-item:hover, a.list-group-item:focus{
 
 	}
 
+.image-wrap{
 	
+	height:260px;
+	background-image: url('/images/ajax-loader.gif');
+	background-repeat:no-repeat;
+	background-position:center;
+}
+	
+
 .post{
 	float:left;
 img{
@@ -191,6 +199,8 @@ img{
 	height:auto;
 	margin-top:5px;
 	margin-bottom:10px;
+
+
 }
 h2,h3,h4,h5{
 	font-family:'Merriweather Sans', sans-serif;
@@ -269,4 +279,65 @@ code{
 	}
 }
 }
+.jumbotron{
+	background-color:#fbfbfb;
+	h1{
+		font-size:36px;
+	}
+	p, a{
+		font-size:16px;
+	}
+	a{
+		font-family: 'Merriweather Sans', sans-serif;
 
+	}
+}
+.navbar-brand{
+	background:#2997A2; color:#fff!important;
+}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus{
+	background:#2997A2; color:#fff!important;
+
+}
+td{
+	img{
+	  margin-right: 5px;
+	}
+}
+.nomargintop{
+	margin-top:-20px;
+	padding-top:0px;
+}
+.top20{
+	margin-top:20px;
+}
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+  z-index: 2;
+  color: #fff;
+  background-color: $link-color;
+  border-color: $link-color;
+  cursor: default;
+}
+.pagination > li > a, .pagination > li > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  line-height: 1.42857;
+  text-decoration: none;
+  color: $link-color;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin-left: -1px;
+}
+.btn-about {
+  background-color: #fbfbfb;
+  border-color: #666;
+  padding:8px!important;
+  color:#666;
+  font-family: 'Alegreya Sans SC', sans-serif;
+}
+.btn-about:hover, .btn-about:focus, .btn-about:active, .btn-about.active, .open > .btn-about.dropdown-toggle {
+  color: #111;
+  background-color: #fbfbfb;
+  border-color: #111;
+}

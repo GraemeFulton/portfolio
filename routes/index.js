@@ -43,6 +43,11 @@ exports = module.exports = function(app) {
 
 	app.get('/projects/', routes.views.projects);
 	app.get('/projects/post/:post', routes.views.projectitem);
+
+	//app.get('/about/', 	routes.views.about)
+
+	app.get('/pages/:category?', routes.views.pages);
+	app.get('/pages/post/:page', routes.views.page);
 	
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

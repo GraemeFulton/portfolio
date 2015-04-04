@@ -1,0 +1,24 @@
+extends ../layouts/default
+
+block content
+	.container: .row: .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+		article
+			hr
+			if data.page.image.exists
+				.image-wrap: img(data-original='/page/single/'+data.page.image.filename).img-responsive.lazy
+			if !data.page
+				h2 Invalid Page.
+			else
+				header
+					h1= data.page.title
+					h5 Posted 
+						if data.page.publishedDate
+							| on #{data.page._.publishedDate.format('MMMM Do, YYYY')} 
+						if data.page.author
+							| by #{data.page.author.name.first}
+				.post
+					!= data.page.content.full
+block js
+	<script>
+	$('img.lazy').load(function() {var h= $(this).height(); $('.image-wrap').css("height", h); });
+	</script>

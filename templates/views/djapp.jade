@@ -34,6 +34,9 @@ block head
       width:100%;
       background-color: #232323;
       }
+      h3{
+      color:#646464;
+      }
     //if lt IE 9
       script(type='text/javascript').
         alert("Your browser does not support the canvas tag.");
@@ -47,17 +50,18 @@ block head
   | &#x9;
 
 block content 
-    div.container-fluid(style='padding-right:40px;')
-        p.pull-right: a(href='/projects') &larr; back to projects
+    div.container(style='padding-right:40px;')
+        p.pull-left: a(href='/projects') &larr; back to projects
 
     #content
-      div
-        canvas#DJApp(data-processing-sources='/DJApp/DJApp.pde', width='1300', height='900')
+      div.text-center
+        canvas#DJApp(data-processing-sources='/DJApp/DJApp.pde', width='1300', height='900', style="max-width:100%;")
           p Your browser does not support the canvas tag.
           // Note: you can put any alternative content here.
         | &#x9;&#x9;&#x9;&#x9;
         noscript
           p JavaScript is required to view the contents of this page.
+        h3 (For audio please use chrome)
     div.container: .col-sm-10.col-md-9
       article
         h1= data.post.title

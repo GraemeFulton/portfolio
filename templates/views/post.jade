@@ -9,7 +9,7 @@ block content
 			p: a(href='/writings') &larr; back to the writings
 			hr
 			if data.post.image.exists
-				.image-wrap: img(src='/post/single/'+data.post.image.filename).img-responsive
+				.image-wrap: img(data-original='/post/single/'+data.post.image.filename).img-responsive.lazy
 			if !data.post
 				h2 Invalid Post.
 			else
@@ -39,3 +39,6 @@ block js
 	<script src="http://alexgorbatchev.com/pub/sh/current/scripts/shBrushPHP.js" type="text/javascript"></script>
 
 	<script type="text/javascript">SyntaxHighlighter.all()</script>
+	<script>
+	$('img.lazy').load(function() {var h= $(this).height(); $('.image-wrap').css("height", h); });
+	</script>

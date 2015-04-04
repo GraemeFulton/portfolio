@@ -1,9 +1,7 @@
 extends ../layouts/default
 
 mixin post(post)
-	.div(data-ks-editable=editable(user, { list: 'Projects', id: post.id }))
-				
-		div.col-sm-4
+	.div(data-ks-editable=editable(user, { list: 'Projects', id: post.id })).item.col-sm-4
 			hr
 
 			p.lead.text-muted Posted 
@@ -15,7 +13,7 @@ mixin post(post)
 			//post image
 			if post.image.exists
 				div.imgcontainer.col-sm-12.nopad: a(href='/projects/post/' + post.slug)
-					img(src='/project/single/'+post.image.filename).img
+					img(data-original='/project/single/'+post.image.filename src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" ).img.lazy
 			
 			//post title
 			h2: a(href='/projects/post/' + post.slug)= post.title
@@ -32,8 +30,7 @@ block intro
 		h1= 'Projects'
 
 block content
-	.container: .row
-		.col-sm-12.col-md-12
+	.container.nopad: .col-sm-12.col-md-12
 				if data.posts.results.length
 					if data.posts.totalPages > 1
 						h4.text-weight-normal Showing 
@@ -45,22 +42,25 @@ block content
 							|  posts.
 					else
 						h4.text-weight-normal Showing #{utils.plural(data.posts.results.length, '* post')}.
-					each post in data.posts.results
-						+post(post)
-						
-					if data.posts.totalPages > 1
-						ul.pagination.col-sm-12
-							if data.posts.previous
-								li: a(href='?page=' + data.posts.previous): span.glyphicon.glyphicon-chevron-left
-							else
-								li.disabled: a(href='?page=' + 1): span.glyphicon.glyphicon-chevron-left
-							each p, i in data.posts.pages
-								li(class=data.posts.currentPage == p ? 'active' : null)
-									a(href='?page=' + (p == '...' ? (i ? data.posts.totalPages : 1) : p ))= p
-							if data.posts.next
-								li: a(href='?page=' + data.posts.next): span.glyphicon.glyphicon-chevron-right
-							else
-								li.disabled: a(href='?page=' + data.posts.totalPages): span.entypo.glyphicon.glyphicon-chevron-right
+					div(style:"padding:0px;").row.j-masonry
+						each post in data.posts.results
+							+post(post)
+							
+						if data.posts.totalPages > 1
+							ul.pagination.col-sm-12
+								if data.posts.previous
+									li: a(href='?page=' + data.posts.previous): span.glyphicon.glyphicon-chevron-left
+								else
+									li.disabled: a(href='?page=' + 1): span.glyphicon.glyphicon-chevron-left
+								each p, i in data.posts.pages
+									li(class=data.posts.currentPage == p ? 'active' : null)
+										a(href='?page=' + (p == '...' ? (i ? data.posts.totalPages : 1) : p ))= p
+								if data.posts.next
+									li: a(href='?page=' + data.posts.next): span.glyphicon.glyphicon-chevron-right
+								else
+									li.disabled: a(href='?page=' + data.posts.totalPages): span.entypo.glyphicon.glyphicon-chevron-right
 				else
 						h3.text-muted There are no posts yet.
-				
+block js
+		script(src='/js/lib/isotope/isotope.pkgd.min.js')
+		script(src='/js/lib/imagesloaded/imagesloaded.min.js')

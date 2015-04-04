@@ -6,7 +6,7 @@ block content
 			p: a(href='/projects') &larr; back to projects
 			hr
 			if data.post.image.exists
-				.image-wrap: img(src='/project/single/'+data.post.image.filename).img-responsive
+				.image-wrap: img(data-original='/project/single/'+data.post.image.filename).img-responsive.lazy
 			if !data.post
 				h2 Invalid Post.
 			else
@@ -19,3 +19,7 @@ block content
 							| by #{data.post.author.name.first}
 				.post
 					!= data.post.content.full
+block js
+	<script>
+	$('img.lazy').load(function() {var h= $(this).height(); $('.image-wrap').css("height", h); });
+	</script>

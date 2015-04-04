@@ -4845,13 +4845,20 @@ button.close {
   height: 150px;
   overflow: hidden;
   margin-bottom: 15px;
-  margin-top: -7px; }
+  margin-top: -7px;
+  background-image: url('/images/ajax-loader.gif');
+  background-repeat: no-repeat;
+  background-position: center; }
   .imgcontainer .img {
-    max-width: 100%; }
+    width: 100%;
+    max-width: none; }
 
 .pad-30 {
   padding: 30px;
   padding-top: 5px; }
+
+.noshow {
+  visibility: hidden; }
 
 @font-face {
   font-family: OpenBaskerville;
@@ -4912,17 +4919,17 @@ h2 a:hover, h2 a:focus, h1 a:hover, h1 a:focus {
   text-decoration: underline; }
 
 a {
-  color: #38BBC9; }
+  color: #1E94A1; }
 
 a:hover, a:focus {
-  color: #38BBC9;
+  color: #1E94A1;
   text-decoration: underline; }
 
 .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
   z-index: 2;
-  color: #38BBC9;
+  color: #1E94A1;
   background-color: #fafafa;
-  border-color: #38BBC9; }
+  border-color: #1E94A1; }
 
 .lead.text-muted {
   font-size: 14px; }
@@ -4932,7 +4939,8 @@ a:hover, a:focus {
   color: #666; }
 
 .side-block {
-  background: #fafafa; }
+  background: #fafafa;
+  float: left; }
   .side-block .list-group-item {
     border: 0px;
     background: #fafafa;
@@ -4955,9 +4963,15 @@ a.list-group-item:hover, a.list-group-item:focus {
     font-family: 'Alegreya Sans', sans-serif; }
 
 .btn-primary {
-  background-color: #38BBC9;
-  border-color: #38BBC9;
+  background-color: #1E94A1;
+  border-color: #1E94A1;
   font-family: 'Alegreya Sans SC', sans-serif; }
+
+.image-wrap {
+  height: 260px;
+  background-image: url('/images/ajax-loader.gif');
+  background-repeat: no-repeat;
+  background-position: center; }
 
 .post {
   float: left; }
@@ -5019,3 +5033,60 @@ a.list-group-item:hover, a.list-group-item:focus {
     .post .syntaxhighlighter table td.code .line {
       white-space: nowrap !important;
       word-wrap: inherit !important; }
+
+.jumbotron {
+  background-color: #fbfbfb; }
+  .jumbotron h1 {
+    font-size: 36px; }
+  .jumbotron p, .jumbotron a {
+    font-size: 16px; }
+  .jumbotron a {
+    font-family: 'Merriweather Sans', sans-serif; }
+
+.navbar-brand {
+  background: #2997A2;
+  color: #fff !important; }
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+  background: #2997A2;
+  color: #fff !important; }
+
+td img {
+  margin-right: 5px; }
+
+.nomargintop {
+  margin-top: -20px;
+  padding-top: 0px; }
+
+.top20 {
+  margin-top: 20px; }
+
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+  z-index: 2;
+  color: #fff;
+  background-color: #1E94A1;
+  border-color: #1E94A1;
+  cursor: default; }
+
+.pagination > li > a, .pagination > li > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  line-height: 1.42857;
+  text-decoration: none;
+  color: #1E94A1;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin-left: -1px; }
+
+.btn-about {
+  background-color: #fbfbfb;
+  border-color: #666;
+  padding: 8px !important;
+  color: #666;
+  font-family: 'Alegreya Sans SC', sans-serif; }
+
+.btn-about:hover, .btn-about:focus, .btn-about:active, .btn-about.active, .open > .btn-about.dropdown-toggle {
+  color: #111;
+  background-color: #fbfbfb;
+  border-color: #111; }
