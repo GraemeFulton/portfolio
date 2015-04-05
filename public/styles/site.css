@@ -5090,3 +5090,6 @@ td img {
   color: #111;
   background-color: #fbfbfb;
   border-color: #111; }
+
+.about a, .about p {
+  font-family: 'Merriweather Sans', sans-serif; }
