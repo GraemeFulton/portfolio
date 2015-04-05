@@ -24,7 +24,7 @@ keystone.init({
 	'auth': true,
 	'user model': 'Users',
 	'cookie secret': '1`[Z-*h|nF{1cykku}4y8VUMV4QT,|noJ:H4p<6u,0[+$`5>8(}aD`D-OKG_+4>)',
-	'mongo':'mongodb://heroku_app35585747:6o3b5s27m7um8pkpo9rofvr17k@ds061391.mongolab.com:61391/heroku_app35585747',
+	'mongo':'process.env.MONGO_URI',
 
 
 'wysiwyg override toolbar': false,
