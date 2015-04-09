@@ -2,7 +2,7 @@ extends ../layouts/default
 
 block content
 
-	<link href="http://alexgorbatchev.com/pub/sh/current/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+	link(href="/styles/syntaxhighlighter/shThemeDefault.css", rel="stylesheet")
 
 	.container: .row: .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
 		article
@@ -33,12 +33,9 @@ block content
 
 //- Include template-specific javascript files by extending the js block
 block js
-	<script src="http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js" type="text/javascript"></script>
-	<script src="http://alexgorbatchev.com/pub/sh/current/scripts/shAutoloader.js" type="text/javascript"></script>
-	<script src="http://alexgorbatchev.com/pub/sh/current/scripts/shBrushJScript.js" type="text/javascript"></script>
-	<script src="http://alexgorbatchev.com/pub/sh/current/scripts/shBrushPHP.js" type="text/javascript"></script>
-
+	script(src='/js/lib/syntaxhighlighter/shCore.js')
+	script(src='/js/lib/syntaxhighlighter/shAutoloader.js')
+	script(src='/js/lib/syntaxhighlighter/shBrushJScript.js')
+	script(src='/js/lib/syntaxhighlighter/shBrushPHP.js')
 	<script type="text/javascript">SyntaxHighlighter.all()</script>
-	<script>
-	$('img.lazy').load(function() {var h= $(this).height(); $('.image-wrap').css("height", h); });
-	</script>
+	<script>$('img.lazy').load(function() { var h= $('img.lazy').height(); $('.image-wrap').css("height", h); }); $(window).resize(function() {if(this.resizeTO) clearTimeout(this.resizeTO);this.resizeTO = setTimeout(function() {$(this).trigger('resizeEnd');}, 500);});$(window).bind('resizeEnd', function() {var h= $('.img-responsive.lazy').height(); $('.image-wrap').css("height", h); });</script>

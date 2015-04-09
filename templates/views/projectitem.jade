@@ -20,6 +20,4 @@ block content
 				.post
 					!= data.post.content.full
 block js
-	<script>
-	$('img.lazy').load(function() {var h= $(this).height(); $('.image-wrap').css("height", h); });
-	</script>
+	<script>$('img.lazy').load(function() { var h= $('img.lazy').height(); $('.image-wrap').css("height", h); }); $(window).resize(function() {if(this.resizeTO) clearTimeout(this.resizeTO);this.resizeTO = setTimeout(function() {$(this).trigger('resizeEnd');}, 500);});$(window).bind('resizeEnd', function() {var h= $('.img-responsive.lazy').height(); $('.image-wrap').css("height", h); });</script>
