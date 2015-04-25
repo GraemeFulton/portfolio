@@ -4989,6 +4989,8 @@ a.list-group-item:hover, a.list-group-item:focus {
     margin-bottom: 12px; }
     .post .syntaxhighlighter .plain, .post .syntaxhighlighter .plain a {
       color: rgba(0, 0, 0, 0.723) !important; }
+    .post .syntaxhighlighter .html.plain, .post .syntaxhighlighter .html.keyword {
+      padding: 0px; }
     .post .syntaxhighlighter .code {
       background-color: transparent; }
       .post .syntaxhighlighter .code .container {
