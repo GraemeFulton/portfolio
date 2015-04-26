@@ -4856,6 +4856,9 @@ button.close {
 p, p > a {
   font-family: 'Merriweather', serif; }
 
+iframe {
+  max-width: 100%; }
+
 li, label, input, select, textarea, ol {
   font-family: 'Merriweather Sans', sans-serif; }
 

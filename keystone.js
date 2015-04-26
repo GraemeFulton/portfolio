@@ -33,6 +33,8 @@ keystone.init({
 'wysiwyg additional buttons':'table, media, sh4tinymce, image',
 
 'wysiwyg additional plugins': 'table, sh4tinymce, media, image',
+'valid_elements' : "a[href|target=_blank],strong/b,div[align],br"
+
 
 });
 
