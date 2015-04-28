@@ -1,3 +1,4 @@
+    
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,7 +13,7 @@
   var date = new Date();
   var pn = new Perlin('rnd' + date.getTime());
     //Declare three.js variables
-  var camera, scene, renderer, stars=[];
+  var camera, scene, renderer, stars=[], floor=[];
    
   //assign three.js objects to each variable
   function init(){
@@ -75,30 +76,39 @@ function addLight(){
 
   function addGround(){
 
-    //create the ground material using MeshLambert Material
-    var groundMat = new THREE.MeshLambertMaterial( {color: 0xffffff, side: THREE.DoubleSide}  );
-
-    //create the plane geometry
-    var geometry = new THREE.PlaneGeometry(120,100,100,100);
-
-    //make the terrain bumpy
-    for (var i = 0, l = geometry.vertices.length; i < l; i++) {
-      var vertex = geometry.vertices[i];
-      var value = pn.noise(vertex.x / 10, vertex.y /10, 0);
-      vertex.z = value *10;
-    }
-
-    //ensure light is computed correctly
-    geometry.computeFaceNormals();
-    geometry.computeVertexNormals();
-
-    //create the ground form the geometry and material
-    var ground = new THREE.Mesh(geometry,groundMat); 
-    //rotate 90 degrees around the xaxis so we can see the terrain 
-    ground.rotation.x = -Math.PI/-2;
+     for ( var z= -1600; z < 1600; z+=800 ) {
     
-    //add the ground to the scene
-    scene.add(ground); 
+          //create the ground material using MeshLambert Material
+          var groundMat = new THREE.MeshLambertMaterial( {color: 0xffffff, side: THREE.DoubleSide}  );
+
+          //create the plane geometry
+          var geometry = new THREE.PlaneGeometry(240,800,300,300);
+
+          //make the terrain bumpy
+          for (var i = 0, l = geometry.vertices.length; i < l; i++) {
+            var vertex = geometry.vertices[i];
+            var value = pn.noise(vertex.x / 10, vertex.y /10, 0);
+            vertex.z = value *6;
+          }
+
+          //ensure light is computed correctly
+          geometry.computeFaceNormals();
+          geometry.computeVertexNormals();
+
+          //create the ground form the geometry and material
+          var ground = new THREE.Mesh(geometry,groundMat); 
+          //rotate 90 degrees around the xaxis so we can see the terrain 
+          ground.rotation.x = -Math.PI/-2;
+
+          // Then set the z position to where it is in the loop (distance of camera)
+          ground.position.z = z;
+          ground.position.y -=4;
+
+          //add the ground to the scene
+          scene.add(ground); 
+          //finally push it to the stars array 
+          floor.push(ground); 
+        }
 
   }
 
@@ -116,12 +126,31 @@ function addLight(){
       if(star.position.z>1000) star.position.z-=2000;   
     }
   }
+
+  function animateFloor(){
+
+    // loop through each star
+    for(var i=0; i<floor.length; i++) {
+      
+      ground = floor[i]; 
+        
+      // move it forward by a 10th of its array position each time 
+      ground.position.z +=  0.25;
+        
+      // once the star is too close, reset its z position
+      if(ground.position.z>400) ground.position.z-=1600;   
+    }
+
+  }
+
+  
   function render() {
     //get the frame
     requestAnimationFrame( render );
     //render the scene
     renderer.render( scene, camera );
     animateStars();
+    animateFloor();
   }
   
   init();
