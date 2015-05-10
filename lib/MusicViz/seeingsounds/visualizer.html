@@ -7,13 +7,16 @@
 </head>
 <body style="margin:0px;">
   
+  
   <script src="libs/three.js"></script>
   <script src="libs/perlin.js"></script>
+  <script src="libs/THREEx.KeyboardState.js"></script> 
+    
   <script src="objects/starfield.js"></script>
   <script src="objects/terrain.js"></script>
   <script src="objects/light.js"></script>
   <script src="objects/ball.js"></script>
-    
+  <script src="objects/cube.js"></script>
     
   <script>
     
@@ -22,7 +25,9 @@
    */
   
   function Visualizer(){
-   
+  
+    this.keyboard = new THREEx.KeyboardState();
+    this.clock = new THREE.Clock();
     this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
     this.scene =  new THREE.Scene();
     this.renderer = new THREE.WebGLRenderer();;
@@ -32,6 +37,8 @@
     this.terrain = new Terrain();
     
     this.balls = new BallTerrain();
+    
+    this.cube = new Cube();
     
     //create perlin noise object
     this.date = new Date();
@@ -57,6 +64,7 @@
       this.light.addLight(this.scene);
       this.terrain.addGround(this.scene, this.pn);
       this.balls.addBalls(this.scene);
+      this.cube.addCube(this.scene);
       
     },
     render:function(){
@@ -66,8 +74,11 @@
      //render the scene
      this.renderer.render( this.scene, this.camera );
      this.starField.animateStars();
-     this.balls.animateBalls();
-     this.terrain.animateFloor();
+     
+     //uncomment below to animate the terrain 
+     //this.balls.animateBalls();
+     //this.terrain.animateFloor();
+     this.cube.update(this.camera, this.keyboard, this.clock);
     }
     
   };
@@ -75,6 +86,7 @@
  var viz = new Visualizer;
  viz.init();
  viz.render();
+
   
   
   </script>
