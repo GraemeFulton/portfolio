@@ -43,6 +43,9 @@ exports = module.exports = function(app) {
 
 	app.get('/projects/', routes.views.projects);
 	app.get('/projects/post/:post', routes.views.projectitem);
+	
+	app.get('/code/:category?', routes.views.code);
+	app.get('/code/snippet/:snippet', routes.views.codesnippet);
 
 	//app.get('/about/', 	routes.views.about)
 

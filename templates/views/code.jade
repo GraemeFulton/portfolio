@@ -1,7 +1,7 @@
 extends ../layouts/default
 
 mixin post(post)
-	.post(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
+	.post(data-ks-editable=editable(user, { list: 'Snippets', id: post.id }))
 				
 		div.col-sm-9.nopad
 			hr
@@ -12,7 +12,7 @@ mixin post(post)
 				if post.categories && post.categories.length
 					| in 
 					each cat, i in post.categories
-						a(href='/writings/' + cat.key)= cat.name
+						a(href='/code/' + cat.key)= cat.name
 						if i < post.categories.length - 1
 							| , 
 						else
@@ -22,22 +22,22 @@ mixin post(post)
 				
 			//post image
 			if post.image.exists
-				div.imgcontainer.nopad: a(href='/writings/post/' + post.slug)
+				div.imgcontainer.nopad: a(href='/code/snippet/' + post.slug)
 					img(data-original='/post/single/'+post.image.filename src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==").img.lazy
 			
 			//post title
-			h2: a(href='/writings/post/' + post.slug)= post.title
+			h2: a(href='/code/snippet/' + post.slug)= post.title
 				
 				
 			//post content
 			p!= post.content.brief
 			
 			if post.content.extended
-				p.read-more: a(href='/writings/post/' + post.slug) Read more...
+				p.read-more: a(href='/code/snippet/' + post.slug) Read more...
 
 block intro
 	.container
-		h1= data.category ? data.category.name : 'Writings'
+		h1= data.category ? data.category.name : 'Code Snippets'
 
 block content
 	.container: .row
@@ -83,8 +83,8 @@ block content
 			.col-sm-4.col-md-3.side-block
 				h2 Tags
 				.list-group
-					a(href='/writings', class=!data.category ? 'active' : false).list-group-item 
+					a(href='/code', class=!data.category ? 'active' : false).list-group-item 
 						div.category-tag Show all
 					each cat in data.categories
-						a(href='/writings/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).list-group-item
+						a(href='/code/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).list-group-item
 							div.category-tag= cat.name

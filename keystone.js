@@ -33,7 +33,8 @@ keystone.init({
 'wysiwyg additional buttons':'table, media, sh4tinymce, image',
 
 'wysiwyg additional plugins': 'table, sh4tinymce, media, image',
-'valid_elements' : "a[href|target=_blank],strong/b,div[align],br"
+
+
 
 
 });
@@ -65,6 +66,7 @@ keystone.set('routes', require('./routes'));
 keystone.set('nav', {
 	'writing': ['posts', 'post-categories'],
 	'projects':'projects',
+	'snippets':['snippets', 'snippet-tags'],
 	'pages':['pages', 'page-categories'],
 	'galleries': 'galleries',
 	'enquiries': 'enquiries',

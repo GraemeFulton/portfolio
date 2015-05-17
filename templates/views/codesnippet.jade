@@ -1,0 +1,43 @@
+extends ../layouts/default
+
+block content
+
+	link(href="/styles/syntaxhighlighter/shThemeDefault.css", rel="stylesheet")
+
+	.container: .row: .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+		article
+			p: a(href='/code') &larr; back to code snippets
+			hr
+			if data.snippet.image.exists
+				.image-wrap: img(data-original='/post/single/'+data.snippet.image.filename).img-responsive.lazy
+			if !data.snippet
+				h2 Invalid Post.
+			else
+				header
+					h1= data.snippet.title
+					h4.light-weight Posted 
+						if data.snippet.publishedDate
+							| on #{data.snippet._.publishedDate.format('MMMM Do, YYYY')} 
+						if data.snippet.categories && data.snippet.categories.length
+							| in 
+							each cat, cat_i in data.snippet.categories
+								a(href='/code/' + cat.key)= cat.name
+								if cat_i < data.snippet.categories.length - 1
+									| , 
+								else
+									|  
+						if data.snippet.author
+							| by #{data.snippet.author.name.first}
+				.post
+					!= data.snippet.content.full
+					script(src= data.snippet.gist)
+
+//- Include template-specific javascript files by extending the js block
+block js
+	script(src='/js/lib/syntaxhighlighter/shCore.js')
+	script(src='/js/lib/syntaxhighlighter/shAutoloader.js')
+	script(src='/js/lib/syntaxhighlighter/shBrushJScript.js')
+	script(src='/js/lib/syntaxhighlighter/shBrushXml.js')
+	script(src='/js/lib/syntaxhighlighter/shBrushPHP.js')
+	<script type="text/javascript">SyntaxHighlighter.all()</script>
+	<script>$('img.lazy').load(function() { var h= $('img.lazy').height(); $('.image-wrap').css("height", h); }); $(window).resize(function() {if(this.resizeTO) clearTimeout(this.resizeTO);this.resizeTO = setTimeout(function() {$(this).trigger('resizeEnd');}, 500);});$(window).bind('resizeEnd', function() {var h= $('.img-responsive.lazy').height(); $('.image-wrap').css("height", h); });</script>
