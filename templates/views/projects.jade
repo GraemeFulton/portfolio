@@ -1,5 +1,8 @@
 extends ../layouts/default
 
+block head
+	title= title || 'GF Design | Development'
+	
 mixin post(post)
 	.div(data-ks-editable=editable(user, { list: 'Projects', id: post.id })).item.col-sm-4
 			hr

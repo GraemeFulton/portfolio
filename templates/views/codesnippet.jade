@@ -1,5 +1,7 @@
 extends ../layouts/default
-
+block head
+	title= title || 'GF Code snippet'
+	
 block content
 
 	link(href="/styles/syntaxhighlighter/shThemeDefault.css", rel="stylesheet")

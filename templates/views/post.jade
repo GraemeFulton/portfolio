@@ -1,5 +1,10 @@
 extends ../layouts/default
 
+block head
+	title= data.post.title
+	meta(name='description', content= data.post.content.brief)
+
+
 block content
 
 	link(href="/styles/syntaxhighlighter/shThemeDefault.css", rel="stylesheet")
@@ -28,11 +33,18 @@ block content
 									|  
 						if data.post.author
 							| by #{data.post.author.name.first}
+					<div class="addthis_sharing_toolbox"></div>			
 				.post
 					!= data.post.content.full
+				//comments
+				hr
+				h2 Have any thoughts?
+				<div id="disqus_thread"></div>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
 //- Include template-specific javascript files by extending the js block
 block js
+	script(src='/js/lib/disqus/disqus.js')
 	script(src='/js/lib/syntaxhighlighter/shCore.js')
 	script(src='/js/lib/syntaxhighlighter/shAutoloader.js')
 	script(src='/js/lib/syntaxhighlighter/shBrushJScript.js')
@@ -40,3 +52,5 @@ block js
 	script(src='/js/lib/syntaxhighlighter/shBrushPHP.js')
 	<script type="text/javascript">SyntaxHighlighter.all()</script>
 	<script>$('img.lazy').load(function() { var h= $('img.lazy').height(); $('.image-wrap').css("height", h); }); $(window).resize(function() {if(this.resizeTO) clearTimeout(this.resizeTO);this.resizeTO = setTimeout(function() {$(this).trigger('resizeEnd');}, 500);});$(window).bind('resizeEnd', function() {var h= $('.img-responsive.lazy').height(); $('.image-wrap').css("height", h); });</script>
+	<!-- Go to www.addthis.com/dashboard to customize your tools -->
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-555d14e2130829c5" async="async"></script>

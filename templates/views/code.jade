@@ -1,5 +1,8 @@
 extends ../layouts/default
 
+block head
+	title= title || 'GF Code Snippets'
+
 mixin post(post)
 	.post(data-ks-editable=editable(user, { list: 'Snippets', id: post.id }))
 				

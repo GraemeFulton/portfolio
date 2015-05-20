@@ -1,5 +1,8 @@
 extends ../layouts/default
 
+block head
+	title= title || 'GF Design | Development'
+	
 block content
 	.container: .jumbotron
 		img(src='/images/logo.svg', width='160')
