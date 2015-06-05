@@ -29,3 +29,4 @@ build/Release
 
 # Ignore .DS_Store files on OS X
 .DS_Store
+keystone.js
