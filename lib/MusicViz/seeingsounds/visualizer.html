@@ -74,7 +74,7 @@
      requestAnimationFrame( function(){localRenderer.render();} );
      //render the scene
      this.renderer.render( this.scene, this.camera );
-     this.starField.animateStars();
+     this.starField.animateStars(this.camera, this.scene);
      
      //uncomment below to animate the terrain 
      //this.balls.animateBalls();
