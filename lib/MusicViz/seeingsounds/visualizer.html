@@ -13,7 +13,7 @@
   <script src="libs/THREEx.KeyboardState.js"></script> 
     
   <script src="objects/starfield.js"></script>
-  <script src="objects/terrain.js"></script>
+  <script src="objects/terrainMatrix.js"></script>
   <script src="objects/light.js"></script>
   <script src="objects/ball.js"></script>
   <script src="objects/cube.js"></script>
@@ -34,7 +34,7 @@
 
     this.starField = new StarField;
     this.light = new Light();
-    this.terrain = new Terrain();
+    this.terrain = new TerrainMatrix();
     
     this.balls = new BallTerrain();
     
@@ -62,8 +62,9 @@
     
       this.starField.addStars(this.scene);
       this.light.addLight(this.scene);
-      this.terrain.addGround(this.scene, this.pn);
-      this.balls.addBalls(this.scene);
+      this.terrain.createTerrainMatrix(this.scene, this.pn);
+      //this.terrain.addGround(this.scene, this.pn);
+      //this.balls.addBalls(this.scene);
       this.cube.addCube(this.scene);
       
     },
@@ -78,6 +79,7 @@
      //uncomment below to animate the terrain 
      //this.balls.animateBalls();
      //this.terrain.animateFloor();
+     this.terrain.moveWithCamera(this.camera);
      this.cube.update(this.camera, this.keyboard, this.clock);
     }
     
