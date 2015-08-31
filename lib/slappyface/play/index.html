@@ -3,18 +3,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | TappyPlane</title>
+    <title>Unity WebGL Player | Slappy Face</title>
     <link rel="stylesheet" href="TemplateData/style.css">
     <link rel="shortcut icon" href="TemplateData/favicon.ico" />
     <script src="TemplateData/UnityProgress.js"></script>
   </head>
   <body class="template">
-    <p class="header"><span>Unity WebGL Player | </span>TappyPlane</p>
+    <p class="header"><span>Unity WebGL Player | </span>Slappy Face</p>
     <div class="template-wrap clear">
     <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="600px" width="960px"></canvas>
       <div class="logo"></div>
       <div class="fullscreen"><img src="TemplateData/fullscreen.png" width="38" height="38" alt="Fullscreen" title="Fullscreen" onclick="SetFullscreen(1);" /></div>
-      <div class="title">TappyPlane</div>
+      <div class="title">Slappy Face</div>
     </div>
     <p class="footer">&laquo; created with <a href="http://unity3d.com/" title="Go to unity3d.com">Unity</a> &raquo;</p>
     <script type='text/javascript'>
@@ -36,7 +36,7 @@
     canvas: document.getElementById('canvas'),
     progress: null,
     setStatus: function(text) {
-      if (this.progress == null) 
+      if (this.progress == null)
       {
         if (typeof UnityProgress != 'function')
           return;
@@ -48,7 +48,7 @@
       var m = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
       if (m)
         this.progress.SetProgress (parseInt(m[2])/parseInt(m[4]));
-      if (text === "") 
+      if (text === "")
         this.progress.Clear()
     },
     totalDependencies: 0,
@@ -70,7 +70,7 @@
   codeXHR.open('GET', 'Release/play.js', true);
   codeXHR.onload = function() {
     var code = codeXHR.responseText;
-    if (!Math.fround) { 
+    if (!Math.fround) {
 try {
   console.log('optimizing out Math.fround calls');
   var m = /var ([^=]+)=global\.Math\.fround;/.exec(code);
