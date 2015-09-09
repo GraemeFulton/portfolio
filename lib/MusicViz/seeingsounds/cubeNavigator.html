@@ -11,15 +11,13 @@
   <script src="libs/three.js"></script>
   <script src="libs/perlin.js"></script>
   <script src="libs/THREEx.KeyboardState.js"></script> 
-
-  <script src="libs/tween.min.js"></script> 
-
+    
   <script src="objects/starfield.js"></script>
-  <script src="objects/terrainMatrix.js"></script>
+  <script src="objects/terrain.js"></script>
   <script src="objects/light.js"></script>
   <script src="objects/ball.js"></script>
-  <script src="objects/cameraControls.js"></script>
-
+  <script src="objects/cube.js"></script>
+    
   <script>
     
   /**
@@ -36,11 +34,12 @@
 
     this.starField = new StarField;
     this.light = new Light();
-    this.terrain = new TerrainMatrix();
+    this.terrain = new Terrain();
     
     this.balls = new BallTerrain();
     
-    this.cameraControls = new CameraControls();
+    this.cube = new Cube();
+    
     //create perlin noise object
     this.date = new Date();
     this.pn = new Perlin('rnd' + this.date.getTime());
@@ -63,8 +62,10 @@
     
       this.starField.addStars(this.scene);
       this.light.addLight(this.scene);
-      this.terrain.createTerrainMatrix(this.scene, this.pn);
-   
+      this.terrain.addGround(this.scene, this.pn);
+      this.balls.addBalls(this.scene);
+      this.cube.addCube(this.scene);
+      
     },
     render:function(){
       var localRenderer = this;
@@ -72,13 +73,13 @@
      requestAnimationFrame( function(){localRenderer.render();} );
      //render the scene
      this.renderer.render( this.scene, this.camera );
-     this.starField.animateStars(this.camera, this.scene);   
+     this.starField.animateStars();
+     
      //uncomment below to animate the terrain 
      //this.balls.animateBalls();
      //this.terrain.animateFloor();
-     this.terrain.moveWithCamera(this.camera);
-     this.cameraControls.update(this.camera, this.keyboard, this.clock);
-}
+     this.cube.update(this.camera, this.keyboard, this.clock);
+    }
     
   };
   
