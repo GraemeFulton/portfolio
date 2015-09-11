@@ -10,6 +10,7 @@
   
   <script src="libs/three.js"></script>
   <script src="libs/perlin.js"></script>
+  
   <script src="libs/THREEx.KeyboardState.js"></script> 
   <script src="libs/tween.min.js"></script> 
   
@@ -35,15 +36,11 @@
 
     this.starField = new StarField;
     this.light = new Light();
-    this.terrain = new TerrainMatrix();
+    this.terrain;
     
     this.balls = new BallTerrain();
     
     this.cameraControls = new CameraControls();
-    
-    //create perlin noise object
-    this.date = new Date();
-    this.pn = new Perlin('rnd' + this.date.getTime());
 
   }
   
@@ -63,7 +60,9 @@
     
       this.starField.addStars(this.scene);
       this.light.addLight(this.scene);
-      this.terrain.createTerrainMatrix(this.scene, this.pn);
+      this.terrain = new TerrainMatrix(this.scene);
+      this.terrain.createTerrainMatrix();
+      this.terrain.createCanvas();
       
     },
     render:function(){
