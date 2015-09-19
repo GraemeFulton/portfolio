@@ -31,3 +31,4 @@ build/Release
 .DS_Store
 #don't commit keystone.js to github
 #keystone.js
+node_modules
