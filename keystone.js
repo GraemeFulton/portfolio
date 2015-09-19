@@ -30,9 +30,9 @@ keystone.init({
 'wysiwyg override toolbar': false,
 'wysiwyg menubar': true,
 
-'wysiwyg additional buttons':'table, media, sh4tinymce, image',
+'wysiwyg additional buttons':'table, media, image',
 
-'wysiwyg additional plugins': 'table, sh4tinymce, media, image',
+'wysiwyg additional plugins': 'table, media, image',
 
 
 
