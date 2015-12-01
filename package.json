@@ -22,4 +22,7 @@
     "npm": "~3.5.0"
   },
   "scripts": {
-    "start": "n
+    "start": "node keystone.js"
+  },
+  "main": "keystone.js"
+}
