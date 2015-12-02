@@ -7,7 +7,7 @@
     "dotenv": "~1.2.0",
     "keystone": "~0.3.0",
     "mongoose": "^4.2.8",
-    "node-sass": "~1.0.3",
+    "node-sass": "*",
     "node-sass-middleware": "^0.9.7",
     "underscore": "~1.8.3"
   },
